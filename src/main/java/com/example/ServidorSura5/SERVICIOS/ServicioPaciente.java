@@ -5,6 +5,8 @@ import com.example.ServidorSura5.REPOSITORIOS.IrepositorioPacientes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ServicioPaciente {
     //1.Llamar el repositorio pasiente
@@ -22,4 +24,18 @@ public class ServicioPaciente {
             throw new Exception(error.getMessage());
         }
     }
+
+    public List<Paciente> buscarPaciente () throws Exception{
+        try {
+           return iRepositorioPaciente.findAll();
+
+        }catch (Exception error){
+
+            throw new Exception(error.getMessage());
+        }
+
+
+    }
 }
+
+

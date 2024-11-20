@@ -19,6 +19,7 @@ public class  Paciente {
     private String telefono;
     private String correo;
     private String ips;
+
     private String grupoIngresos;
     private Boolean tienePoliza;
     private LocalDate fechaDeAfiliacion;

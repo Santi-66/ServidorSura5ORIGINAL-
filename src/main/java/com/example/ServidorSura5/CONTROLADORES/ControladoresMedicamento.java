@@ -1,6 +1,8 @@
 package com.example.ServidorSura5.CONTROLADORES;
 
+import com.example.ServidorSura5.MODELOS.Medicamento;
 import com.example.ServidorSura5.MODELOS.Paciente;
+import com.example.ServidorSura5.SERVICIOS.ServicioMedicamento;
 import com.example.ServidorSura5.SERVICIOS.ServicioPaciente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,17 +13,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/medicamento")
+    @RequestMapping("/api/medicamento")
 public class ControladoresMedicamento {
     @Autowired
-    ServicioPaciente servicioPaciente;
+    ServicioMedicamento serviciomedicamento;
 
     @PostMapping
-    public ResponseEntity<?> guardar(@RequestBody Paciente datos) {
+    public ResponseEntity<?> guardar(@RequestBody Medicamento datos) {
         try {
             return ResponseEntity
                     .status((HttpStatus.OK))
-                    .body(servicioPaciente.guardarPaciente(datos));
+                    .body(serviciomedicamento.guardarMedicamento(datos));
         } catch (Exception error) {
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
