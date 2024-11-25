@@ -14,17 +14,29 @@ public class ControladoresEnfermedad {
     ServicioEnfermedad servicioEnfermedad;
 
     @PostMapping
-    public ResponseEntity<?> guardar(@RequestBody Enfermedad datos)
-    @GetMapping
-    public ResponseEntity<?> obtener() {
+    public ResponseEntity<?> guardar(@RequestBody Enfermedad datos) {
         try {
             return ResponseEntity
                     .status((HttpStatus.OK))
-                    .body(servicioEnfermedad.buscarEnfermedad());
+                    .body(servicioEnfermedad.guardarEnfermedad(datos));
         } catch (Exception error) {
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
                     .body(error.getMessage());
         }
     }
-}
+
+        @GetMapping
+        public ResponseEntity<?> obtener () {
+            try {
+                return ResponseEntity
+                        .status((HttpStatus.OK))
+                        .body(servicioEnfermedad.buscarEnfermedad());
+            } catch (Exception error) {
+                return ResponseEntity
+                        .status(HttpStatus.BAD_REQUEST)
+                        .body(error.getMessage());
+            }
+        }
+    }
+
